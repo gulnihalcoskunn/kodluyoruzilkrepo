@@ -9,10 +9,13 @@ Bu repo [Kodluyoruz](https://academy.patika.dev/courses/git/odev1) Front-End eğ
 
 ## Usage
 Projeyi cloneladıktan sonra Visual Studio Code programında açınız.
+
 Linux için:
 
-```cd kodluyoruzilkrepo 
-code .```
+```
+cd kodluyoruzilkrepo 
+code .
+```
 
 ## Contributing
 Pull requestler kabul edilir. Büyük değişiklikler için lütfen önce neyi değiştirmek istediğinizi atrtışmak için bir konu açınız.
