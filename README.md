@@ -5,6 +5,7 @@ Bu repo [Kodluyoruz](https://academy.patika.dev/courses/git/odev1) Front-End eğ
 
 ## Installation
 Öncelikle projeyi clonelayın.
+
 `
 git clone https://github.com/gulnihalcoskunn/kodluyoruzilkrepo
 `
