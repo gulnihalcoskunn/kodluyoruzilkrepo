@@ -5,7 +5,9 @@ Bu repo [Kodluyoruz](https://academy.patika.dev/courses/git/odev1) Front-End eğ
 
 ## Installation
 Öncelikle projeyi clonelayın.
-`git clone https://github.com/gulnihalcoskunn/kodluyoruzilkrepo`
+`
+git clone https://github.com/gulnihalcoskunn/kodluyoruzilkrepo
+`
 
 ## Usage
 Projeyi cloneladıktan sonra Visual Studio Code programında açınız.
