@@ -18,5 +18,5 @@ Pull requestler kabul edilir. Büyük değişiklikler için lütfen önce neyi d
 
 ## License
 
-[MIT] (https://opensource.org/license/mit/)
+[MIT](https://opensource.org/license/mit/)
 
