@@ -1,6 +1,6 @@
 const taskDOM=document.querySelector('#task');
 const listDOM= document.querySelector('#list');
-const allLiDOM=document.querySelector('#li');
+const allLiDOM=document.querySelector('li');
 
 function removeElement(erase){
     erase.remove();
