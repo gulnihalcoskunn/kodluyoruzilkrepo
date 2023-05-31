@@ -1,3 +1,4 @@
+
 const taskDOM=document.querySelector('#task');
 const listDOM= document.querySelector('#list');
 const allLiDOM=document.querySelectorAll('li');
@@ -34,24 +35,20 @@ function newElement(){
 
         // li elemani click oldugu zaman isaretlenicek dedik
         liDOM.addEventListener("click", markElements)  
-        
+        taskDOM.value = ""; 
         addStorage();
     }
     else {
         // toast bildirimi
-        $(".error").toast('show')
-
-        // input'un ici bos olsun
-        taskDOM.value = "" 
+        $(".error").toast('show')     
     }
       // li elemani eklendikten sonra input'un ici bos olsun
-      taskDOM.value = "" 
-    
       
 }
+let toDoList;
 
 function startConf(){
-    let toDoList=JSON.parse(localStorage.getItem('toDoList'));
+     toDoList=JSON.parse(localStorage.getItem('toDoList'));
     if(!toDoList){
         toDoList=[];
     }
@@ -59,14 +56,15 @@ function startConf(){
 }
 
 function addStorage(){
-    let toDoList=JSON.parse(localStorage.getItem("toDoList"));
+     toDoList=JSON.parse(localStorage.getItem("toDoList"));
     toDoList.push(`${taskDOM.value}`)
     localStorage.setItem("toDoList",JSON.stringify(toDoList))
+    localDOM();
 }
 
 function eraseStorage(erase){
-    let toDoList=JSON.parse(localStorage.getItem("toDoList"))
-    if ( toDoList.includes( erase.firstChild.textContent ) === true ) {
+     toDoList=JSON.parse(localStorage.getItem("toDoList"))
+    if ( toDoList.includes( erase.firstChild.textContent ) == true ) {
         let indexbul = toDoList.findIndex ( e =>
             e == erase.firstChild.textContent )
 
@@ -77,13 +75,13 @@ function eraseStorage(erase){
 }
 function localDOM() {
     // toDoList ls'sini array'a çevirip olarak çağırdık
-    let toDoList = JSON.parse(localStorage.getItem("toDoList"))
+     toDoList = JSON.parse(localStorage.getItem("toDoList"))
 
     // toDoList'de kayıtlı her eleman ve index numarasını bul 
     toDoList.forEach( (e, index) => {
         let liDOM = document.createElement("li")
         listDOM.append(liDOM)
-        liDOM.innerHTML = toDoList[index]
+       // liDOM.innerHTML = toDoList[index]
         liDOM.innerHTML += closeButton
         listDOM.addEventListener("click", markElements)
         
@@ -91,8 +89,7 @@ function localDOM() {
         liDOM.addEventListener("click", markElements)
     } )
 }
-localSelf()
-
+startConf()
 localDOM()
 
 
