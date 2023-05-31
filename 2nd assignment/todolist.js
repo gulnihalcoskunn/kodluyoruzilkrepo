@@ -1,9 +1,10 @@
 const taskDOM=document.querySelector('#task');
 const listDOM= document.querySelector('#list');
-const allLiDOM=document.querySelector('li');
+const allLiDOM=document.querySelectorAll('li');
 
 function removeElement(erase){
     erase.remove();
+    eraseStorage(erase);
 }
 
 function markElements(){
@@ -32,7 +33,9 @@ function newElement(){
         liDOM.innerHTML = `${taskDOM.value}${closeButton}`
 
         // li elemani click oldugu zaman isaretlenicek dedik
-        liDOM.addEventListener("click", markElements)    
+        liDOM.addEventListener("click", markElements)  
+        
+        addStorage();
     }
     else {
         // toast bildirimi
@@ -44,4 +47,54 @@ function newElement(){
       // li elemani eklendikten sonra input'un ici bos olsun
       taskDOM.value = "" 
     
+      
 }
+
+function startConf(){
+    let toDoList=JSON.parse(localStorage.getItem('toDoList'));
+    if(!toDoList){
+        toDoList=[];
+    }
+    localStorage.setItem("toDoList",JSON.stringify(toDoList))
+}
+
+function addStorage(){
+    let toDoList=JSON.parse(localStorage.getItem("toDoList"));
+    toDoList.push(`${taskDOM.value}`)
+    localStorage.setItem("toDoList",JSON.stringify(toDoList))
+}
+
+function eraseStorage(erase){
+    let toDoList=JSON.parse(localStorage.getItem("toDoList"))
+    if ( toDoList.includes( erase.firstChild.textContent ) === true ) {
+        let indexbul = toDoList.findIndex ( e =>
+            e == erase.firstChild.textContent )
+
+        toDoList.splice(indexbul,1)    
+
+        localStorage.setItem("toDoList",JSON.stringify(toDoList))
+    }
+}
+function localDOM() {
+    // toDoList ls'sini array'a çevirip olarak çağırdık
+    let toDoList = JSON.parse(localStorage.getItem("toDoList"))
+
+    // toDoList'de kayıtlı her eleman ve index numarasını bul 
+    toDoList.forEach( (e, index) => {
+        let liDOM = document.createElement("li")
+        listDOM.append(liDOM)
+        liDOM.innerHTML = toDoList[index]
+        liDOM.innerHTML += closeButton
+        listDOM.addEventListener("click", markElements)
+        
+        // li elemani click oldugu zaman isaretlenicek dedik
+        liDOM.addEventListener("click", markElements)
+    } )
+}
+localSelf()
+
+localDOM()
+
+
+
+
