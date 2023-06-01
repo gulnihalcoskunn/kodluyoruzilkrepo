@@ -19,6 +19,7 @@ const closeButton=`<button onclick="removeElement(parentNode)" style="padding: 1
 allLiDOM.forEach (e => {e.addEventListener("click", markElements); e.innerHTML += `${closeButton}` } )
 
 function newElement(){
+    
 
     if (taskDOM.value  && taskDOM.value.trim()) {
         // listeye li elemani ekleme
@@ -35,8 +36,10 @@ function newElement(){
 
         // li elemani click oldugu zaman isaretlenicek dedik
         liDOM.addEventListener("click", markElements)  
-        taskDOM.value = ""; 
+        
         addStorage();
+
+        taskDOM.value = ""; 
     }
     else {
         // toast bildirimi
@@ -48,18 +51,19 @@ function newElement(){
 let toDoList;
 
 function startConf(){
-     toDoList=JSON.parse(localStorage.getItem('toDoList'));
+    toDoList=JSON.parse(localStorage.getItem('toDoList'));
     if(!toDoList){
         toDoList=[];
-    }
-    localStorage.setItem("toDoList",JSON.stringify(toDoList))
+    }   
+    localStorage.setItem("toDoList",JSON.stringify(toDoList)) 
+    
 }
 
 function addStorage(){
      toDoList=JSON.parse(localStorage.getItem("toDoList"));
     toDoList.push(`${taskDOM.value}`)
     localStorage.setItem("toDoList",JSON.stringify(toDoList))
-    localDOM();
+    
 }
 
 function eraseStorage(erase){
@@ -78,12 +82,12 @@ function localDOM() {
      toDoList = JSON.parse(localStorage.getItem("toDoList"))
 
     // toDoList'de kayıtlı her eleman ve index numarasını bul 
-    toDoList.forEach( (e, index) => {
+    toDoList.forEach( index=> {
         let liDOM = document.createElement("li")
         listDOM.append(liDOM)
-       // liDOM.innerHTML = toDoList[index]
+        liDOM.innerHTML = toDoList[index]
         liDOM.innerHTML += closeButton
-        listDOM.addEventListener("click", markElements)
+        //listDOM.addEventListener("click", markElements)
         
         // li elemani click oldugu zaman isaretlenicek dedik
         liDOM.addEventListener("click", markElements)
