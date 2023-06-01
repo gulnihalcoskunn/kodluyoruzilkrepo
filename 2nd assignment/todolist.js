@@ -38,15 +38,14 @@ function newElement(){
         liDOM.addEventListener("click", markElements)  
         
         addStorage();
-
-        taskDOM.value = ""; 
     }
     else {
         // toast bildirimi
-        $(".error").toast('show')     
+        $(".error").toast('show')  
+        taskDOM.value = "";    
     }
       // li elemani eklendikten sonra input'un ici bos olsun
-      
+      taskDOM.value = ""; 
 }
 let toDoList;
 
@@ -82,12 +81,12 @@ function localDOM() {
      toDoList = JSON.parse(localStorage.getItem("toDoList"))
 
     // toDoList'de kayıtlı her eleman ve index numarasını bul 
-    toDoList.forEach( index=> {
+    toDoList.forEach( (e,index)=> {
         let liDOM = document.createElement("li")
         listDOM.append(liDOM)
         liDOM.innerHTML = toDoList[index]
         liDOM.innerHTML += closeButton
-        //listDOM.addEventListener("click", markElements)
+        listDOM.addEventListener("click", markElements)
         
         // li elemani click oldugu zaman isaretlenicek dedik
         liDOM.addEventListener("click", markElements)
